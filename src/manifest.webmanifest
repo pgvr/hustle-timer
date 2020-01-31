@@ -1,0 +1,21 @@
+{
+  "name": "hustle-timer",
+  "short_name": "hustle-timer",
+  "theme_color": "#ffeb3b",
+  "background_color": "#263238",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/assets/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

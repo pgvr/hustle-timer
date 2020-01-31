@@ -1,0 +1,36 @@
+<div class="progress-items">
+  <app-progress-item
+    *ngFor="let pomo of [4, 3, 2, 1]"
+    [done]="timerService.remainingPomos <= pomo - 1"
+    [inProgress]="timerService.remainingPomos === pomo"
+  ></app-progress-item>
+</div>
+
+<div class="time mat-display-4">
+  {{ getMinutes(timerService.time) }}:{{ getSeconds(timerService.time) }}
+</div>
+<div class="status mat-display-3">{{ timerService.status }}</div>
+<div class="button-container">
+  <button
+    mat-flat-button
+    color="accent"
+    *ngIf="!timerService.running"
+    (click)="timerService.start()"
+  >
+    <ng-container *ngIf="timerService.status === 'ready, set'">Go</ng-container>
+    <ng-container *ngIf="timerService.status !== 'ready, set'"
+      >Continue</ng-container
+    >
+  </button>
+  <button
+    mat-flat-button
+    color="accent"
+    *ngIf="timerService.running"
+    (click)="timerService.pause()"
+  >
+    Pause
+  </button>
+  <button mat-stroked-button color="accent" (click)="timerService.reset()">
+    Reset
+  </button>
+</div>
