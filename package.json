@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node dist/hustle-timer/server/main.js",
-    "build": "ng run hustle-timer:prerender",
+    "build": "ng build --prod && ng run hustle-timer:server:production",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
