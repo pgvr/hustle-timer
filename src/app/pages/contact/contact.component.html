@@ -1,1 +1,45 @@
-<p>contact works!</p>
+<div class="wrapper">
+  <p>
+    If you have any questions, feedback or just want to say hi, feel free to do
+    so. :)
+  </p>
+  <form (submit)="sendMessage($event)">
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>Name</mat-label>
+      <input
+        type="text"
+        [(ngModel)]="name"
+        matInput
+        placeholder="Turgle Burgle"
+        name="name"
+        color="accent"
+        required
+      />
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>E-Mail</mat-label>
+      <input
+        type="email"
+        [(ngModel)]="email"
+        matInput
+        placeholder="turgleburgle@gmail.com"
+        name="_replyto"
+        required
+      />
+      <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>Message</mat-label>
+      <textarea
+        matInput
+        [(ngModel)]="message"
+        placeholder="I just wanted to say hi..."
+        name="message"
+        required
+      ></textarea>
+    </mat-form-field>
+    <button mat-flat-button type="submit" color="accent">Send</button>
+  </form>
+</div>

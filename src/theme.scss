@@ -13,6 +13,10 @@ $hustle-timer-primary: mat-palette($mat-blue-gray, 900);
 $hustle-timer-accent: mat-palette($mat-yellow, 500);
 $hustle-timer-warn: mat-palette($mat-red);
 
+$custom-typography: mat-typography-config(
+  $font-family: "Montserrat, monospace"
+);
+
 // Create the theme object (a Sass map containing all of the palettes).
 $hustle-timer-theme: mat-light-theme(
   $hustle-timer-primary,
@@ -24,3 +28,4 @@ $hustle-timer-theme: mat-light-theme(
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($hustle-timer-theme);
+@include angular-material-typography($custom-typography);

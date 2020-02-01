@@ -1,0 +1,33 @@
+@import "../../../variables.scss";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 32rem;
+  margin: 0 auto;
+  form {
+    display: flex;
+    flex-direction: column;
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+      color: $accent;
+    }
+    ::ng-deep .mat-form-field-label {
+      color: $accent;
+    }
+    :-ms-input-placeholder {
+      color: darken($accent, 30%);
+    }
+
+    ::-webkit-input-placeholder {
+      color: darken($accent, 30%);
+    }
+
+    :-moz-placeholder {
+      color: darken($accent, 30%);
+    }
+
+    ::-moz-placeholder {
+      color: darken($accent, 30%);
+    }
+  }
+}

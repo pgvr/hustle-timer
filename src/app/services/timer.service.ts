@@ -25,6 +25,7 @@ export class TimerService {
     this.running = true;
     if (this.status === "ready, set") {
       // play start sound
+      this.playStartSound();
       this.status = "hustle";
     }
     this.interval = setInterval(() => {
@@ -48,14 +49,26 @@ export class TimerService {
     this.status = "ready, set";
   }
 
+  private playStartSound(): Promise<void> {
+    const audio = new Audio("/assets/start.ogg");
+    return audio.play();
+  }
+
+  private playFinishSound(): Promise<void> {
+    const audio = new Audio("/assets/done.ogg");
+    return audio.play();
+  }
+
   private switchModes(): void {
     if (this.status === "hustle") {
       // play finish sound
+      this.playFinishSound();
       this.status = "relax";
       this.remainingPomos--;
       this.takeBreak();
     } else if (this.status === "relax") {
       // play start sound
+      this.playStartSound();
       this.status = "hustle";
       this.time = WORK_MIN * 60;
       if (this.remainingPomos === 0) {
