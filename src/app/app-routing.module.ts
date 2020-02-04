@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { TimerComponent } from "./pages/timer/timer.component";
 import { AboutComponent } from "./pages/about/about.component";
 import { ContactComponent } from "./pages/contact/contact.component";
+import { ImprintComponent } from "./pages/imprint/imprint.component";
 
 const routes: Routes = [
   {
@@ -16,6 +17,15 @@ const routes: Routes = [
   {
     path: "contact",
     component: ContactComponent
+  },
+  {
+    path: "imprint",
+    component: ImprintComponent
+  },
+  {
+    path: "privacy",
+    component: ImprintComponent,
+    data: { privacy: true }
   }
 ];
 

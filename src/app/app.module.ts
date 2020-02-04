@@ -17,6 +17,7 @@ import { ContactComponent } from "./pages/contact/contact.component";
 import { ProgressItemComponent } from "./components/progress-item/progress-item.component";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { ImprintComponent } from './pages/imprint/imprint.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpClientModule } from "@angular/common/http";
     TimerComponent,
     AboutComponent,
     ContactComponent,
-    ProgressItemComponent
+    ProgressItemComponent,
+    ImprintComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "serverApp" }),

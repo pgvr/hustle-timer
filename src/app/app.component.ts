@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+import { MetaService } from "./services/meta.service";
 
 @Component({
   selector: "app-root",
@@ -8,5 +9,5 @@ import { Router } from "@angular/router";
 })
 export class AppComponent {
   title = "hustle-timer";
-  constructor(public router: Router) {}
+  constructor(public router: Router, private _meta: MetaService) {}
 }
