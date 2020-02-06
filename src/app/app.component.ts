@@ -1,6 +1,9 @@
 import { Component } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, NavigationEnd } from "@angular/router";
 import { MetaService } from "./services/meta.service";
+import { environment } from "src/environments/environment";
+
+declare var gtag;
 
 @Component({
   selector: "app-root",
@@ -8,6 +11,20 @@ import { MetaService } from "./services/meta.service";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
-  title = "hustle-timer";
-  constructor(public router: Router, private _meta: MetaService) {}
+  constructor(public router: Router, private _meta: MetaService) {
+    if (environment.production) {
+      const script = document.createElement("script");
+      script.async = true;
+      script.src =
+        "https://www.googletagmanager.com/gtag/js?id=" + environment.code;
+      document.head.prepend(script);
+      router.events.subscribe(event => {
+        if (event instanceof NavigationEnd) {
+          gtag("config", "UA-100079341-6", {
+            page_path: event.urlAfterRedirects
+          });
+        }
+      });
+    }
+  }
 }

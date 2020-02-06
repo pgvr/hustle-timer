@@ -1,8 +1,5 @@
 import { Injectable } from "@angular/core";
-
-const WORK_MIN = 0.5;
-const SHORT_BREAK_MIN = 0.1;
-const LONG_BREAK_MIN = 0.2;
+import { environment } from "../../environments/environment";
 
 @Injectable({
   providedIn: "root"
@@ -15,7 +12,7 @@ export class TimerService {
   public status: "ready, set" | "hustle" | "relax";
 
   constructor() {
-    this.time = WORK_MIN * 60;
+    this.time = environment.workMins * 60;
     this.running = false;
     this.remainingPomos = 4;
     this.status = "ready, set";
@@ -43,7 +40,7 @@ export class TimerService {
 
   public reset(): void {
     clearInterval(this.interval);
-    this.time = WORK_MIN * 60;
+    this.time = environment.workMins * 60;
     this.running = false;
     this.remainingPomos = 4;
     this.status = "ready, set";
@@ -70,7 +67,7 @@ export class TimerService {
       // play start sound
       this.playStartSound();
       this.status = "hustle";
-      this.time = WORK_MIN * 60;
+      this.time = environment.workMins * 60;
       if (this.remainingPomos === 0) {
         this.remainingPomos = 4;
       }
@@ -79,9 +76,9 @@ export class TimerService {
 
   private takeBreak(): void {
     if (this.remainingPomos === 0) {
-      this.time = LONG_BREAK_MIN * 60;
+      this.time = environment.longBreakMins * 60;
     } else {
-      this.time = SHORT_BREAK_MIN * 60;
+      this.time = environment.shortBreakMins * 60;
     }
   }
 }
