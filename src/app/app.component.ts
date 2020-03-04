@@ -1,7 +1,9 @@
-import { Component, AfterViewInit } from "@angular/core";
+import { Component, AfterViewInit, Inject, PLATFORM_ID } from "@angular/core";
 import { Router, NavigationEnd } from "@angular/router";
 import { MetaService } from "./services/meta.service";
 import { environment } from "src/environments/environment";
+import { DOCUMENT } from "@angular/common";
+import { isPlatformBrowser } from "@angular/common";
 
 declare var gtag;
 
@@ -11,10 +13,14 @@ declare var gtag;
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements AfterViewInit {
-  constructor(public router: Router, private _meta: MetaService) {}
+  constructor(
+    public router: Router,
+    private _meta: MetaService,
+    @Inject(PLATFORM_ID) private platformId: string
+  ) {}
 
   ngAfterViewInit() {
-    if (environment.production) {
+    if (environment.production && isPlatformBrowser(this.platformId)) {
       const script = document.createElement("script");
       script.async = true;
       script.src =
